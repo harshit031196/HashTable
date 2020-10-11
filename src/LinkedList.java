@@ -35,7 +35,7 @@ public class LinkedList<K> {
 		}
 		while(temp!=null) {
 			count++;
-			if(temp.getKey()==key) {flag=true;break;}
+			if(temp.getKey().equals(key)) {return true;}
 			temp=temp.getNext();
 		}
 		return flag;
