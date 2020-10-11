@@ -9,12 +9,15 @@ public class HashTable<K> {
 		MyMapNode temp = l.head;
 		MyMapNode n = new MyMapNode(key);
 		if(l.search(key)) {
-			while(temp.getNext().getKey()!=n.getKey()) {
+			while(temp!=null) {
+				if(temp.getKey().equals(key)) {
+					int val = temp.getValue();
+					val++;
+					temp.setValue(val);
+					return;
+				}
 				temp=temp.getNext();
 			}
-			int val = temp.getValue();
-			val++;
-			temp.setKey(val);
 		}else {
 			l.insertNode(key);
 		}
@@ -26,13 +29,19 @@ public class HashTable<K> {
 		MyMapNode temp = l.head;
 		MyMapNode n = new MyMapNode(key);
 		if(l.search(key)) {
-			MyMapNode prev = null;
-			while(temp.getNext().getKey()!=n.getKey()) {
-				prev=temp;
+			MyMapNode prev = temp;
+			if(temp.getKey().equals(key)) {
+				l.head=temp.getNext();
+				return;
+			}
+			temp=temp.getNext();
+			while(temp!=null) {
+				if(temp.getKey().equals(key)) {
+					prev.setNext(temp.getNext());
+					return;
+				}
 				temp=temp.getNext();
 			}
-			prev.setNext(temp.getNext());
-			
 		}else {
 			System.out.println("This is not present in the hash map");
 		}
