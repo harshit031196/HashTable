@@ -16,7 +16,8 @@ public class HashTableMain {
 		}
 		ht.insertMapNode(temp);
 		ht.printHashMap();
-		ht.delete("to");
+		ht.delete("be");
+		ht.printHashMap();
 	}
 
 }
